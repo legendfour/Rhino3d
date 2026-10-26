@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11151b">
+  <title>Rhino 交互模型展示</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+  </script>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">R</span><div><strong id="project-title">交互模型展示</strong><small>RHINO WEB VIEWER</small></div></div>
+      <div class="top-actions"><span class="status"><i></i><span id="status-text">示例模型</span></span><button id="reset-view" class="icon-button" title="重置视角">重置视角</button></div>
+    </header>
+    <section class="workspace">
+      <aside class="sidebar">
+        <div class="section-heading"><div><span class="eyebrow">MODEL CONTROLS</span><h1>模型交互</h1></div></div>
+        <p class="intro">拖动旋转，滚轮缩放。点击部件或下方按钮查看模型。</p>
+        <div class="control-list" id="controls"></div>
+        <div class="divider"></div>
+        <div class="section-heading compact"><div><span class="eyebrow">PARTS</span><h2>模型部件</h2></div><button id="show-all" class="text-button">显示全部</button></div>
+        <div id="parts" class="parts-list"></div>
+        <div class="hint"><span class="hint-icon">✦</span><p>点击模型中的部件可高亮选择。触屏设备可单指旋转、双指缩放。</p></div>
+        <div class="footer-note">可替换为自己的 Rhino 模型 · 查看 README.md</div>
+      </aside>
+      <section class="viewer" aria-label="3D 模型视图">
+        <div class="viewer-top"><span class="view-label"><span class="live-dot"></span> 交互预览</span><button id="explode" class="floating-button">分解视图</button></div>
+        <canvas id="canvas"></canvas>
+        <div class="loading" id="loading"><div class="spinner"></div><span>正在加载模型…</span></div>
+        <div class="viewer-bottom"><span>左键拖动旋转</span><span>滚轮缩放</span><span>右键拖动平移</span></div>
+        <div class="toast" id="toast" role="status"></div>
+      </section>
+      <aside class="info-panel" id="info-panel">
+        <div class="info-top"><span class="eyebrow">SELECTED PART</span><span class="part-number" id="part-number">01</span></div>
+        <div class="part-swatch" id="part-swatch"></div>
+        <h2 id="part-title">整机组件</h2>
+        <p id="part-description">点击模型中的部件查看介绍。</p>
+        <div class="info-rule"></div>
+        <span class="eyebrow">QUICK ACTIONS</span>
+        <button class="quick-action" id="focus-part"><span>◎</span> 聚焦该部件 <b>↗</b></button>
+        <button class="quick-action" id="toggle-part"><span>◉</span> 隐藏 / 显示 <b>⌘</b></button>
+        <div class="info-bottom"><span>MODEL VIEWER</span><span>v1.0</span></div>
+      </aside>
+    </section>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
